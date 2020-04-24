@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+  <!-- Data -->
+
+  <script id="data" type="application/json">
+    [
+      {
+        "name":  "Google",
+        "code":  "50X8",
+        "loc":   "http://www.google.de",
+        "usage": "manual"
+      },
+      {
+        "name":  "Google 2",
+        "code":  "DH1X",
+        "loc":   "http://www.google.de",
+        "usage": "manual"
+      }
+    ]
+  </script>
+
+
+  <!-- Styles -->
+
+  <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet">
+  
+  <style>
+
+    * {
+      box-sizing: border-box;
+      font-family: 'Questrial', Helvetica, sans-serif;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    #search {
+      background-image: url('searchicon.png');
+      background-position: 10px 10px;
+      background-repeat: no-repeat;
+      width: 100%;
+      font-size: 16px;
+      padding: 12px 20px 12px 40px;
+      border: 1px solid #ddd;
+      margin-bottom: 12px;
+    }
+
+    #codesTable {
+      border-collapse: collapse;
+      width: 100%;
+      border: 1px solid #ddd;
+      font-size: 18px;
+    }
+
+    #codesTable th, #codesTable td {
+      text-align: left;
+      padding: 12px;
+    }
+
+    #codesTable tr {
+      border-bottom: 1px solid #ddd;
+    }
+
+    #codesTable tr.header, #codesTable tr:hover {
+      background-color: #f1f1f1;
+    }
+
+    .left  { float: left; }
+    .right { float: right; }
+    .clear:after { clear: both; }
+
+  </style>
+
+</head>
+<body>
+
+  <h2 class="left" style="margin-top: 0;">Codes</h2>
+
+  <div class="right clear">
+    <span id="code">click new</span>
+
+    <button id="newCode">New Code</button>
+    <button id="copy">Copy</button>
+  </div>
+
+  <input type="text" id="search" onkeyup="searchOnKeyUp()" placeholder="Search all ..." title="Type in a name">
+
+  <table id="codesTable">
+    <tr class="header">
+      <th style="width:60%;">Location</th>
+      <th style="width:40%;">Code</th>
+    </tr>
+  </table>
+
+  <script>
+
+    // Hardcopy from lib (rest see below)
+
+    // page.js
+
+    function htmlReady( fn )
+    {
+      if( document.readyState !== 'loading' )
+        fn();
+      else
+        document.addEventListener('DOMContentLoaded', fn);
+    }
+
+    htmlReady( function() {
+
+      var data = JSON.parse( byId('#data').innerHTML );
+
+      for( let e of data )
+
+        byId('#codesTable').innerHTML +=
+
+          '<tr>' +
+          '  <td><a href="' + e['loc'] + '">' + e['name'] + '</a></td>' +  // target="_blank"
+          '  <td>' + e['code'] + '</td>' +
+          '</tr>';
+
+      byId('#newCode').onclick = function() {
+      
+        var used = arrColumn(data, 'code');
+       
+        byId('#code').innerHTML = newCode(used, 4);
+
+      };
+
+      byId('#copy').onclick = function() {
+      
+        copyClipboard('#code');
+
+      };
+
+    });
+
+
+    // https://www.w3schools.com/howto/howto_js_filter_table.asp
+
+    function searchOnKeyUp()
+    {
+      var cols, display, val, i, e;
+      
+      var filter = document.getElementById('search').value.toUpperCase();
+      var table  = document.getElementById('codesTable');
+      var lines  = table.getElementsByTagName('tr');
+      
+      for( i = 0; i < lines.length; i++)
+      {        
+        cols = lines[i].getElementsByTagName('td');
+
+        display = false;
+        
+        if(cols)  // redundant
+
+          for( e = 0; e < cols.length; e++)
+          {
+            val = cols[e].textContent || cols[e].innerText;
+
+            if( val.toUpperCase().indexOf(filter) > -1 )
+              display = true;
+          }   
+
+        if( display )
+          lines[i].style.display = '';
+        else
+          lines[i].style.display = 'none';
+      }   
+    }
+
+  </script>
+
+
+  <!-- Hardcopy from lib -->
+
+  <script>
+
+    // lang.js
+    
+    function byId( id )
+    {
+      while( id.charAt(0) == '#')  // # is optional
+        id = id.substring(1);
+
+      return document.getElementById( id );
+    }
+    
+    // arrays_and_obj.js
+
+    function arrColumn( arr, col )
+    {
+      return arr.map(x => x[col]);
+    }
+
+    // misc.js
+
+    // Alternative: https://stackoverflow.com/questions/45071353/copy-text-string-on-click/45071478
+
+    function copyClipboard(id)
+    {
+      var elem = document.querySelector(id);
+
+      var range = document.createRange();  
+      range.selectNodeContents(elem);
+
+      window.getSelection().addRange(range);
+
+      // var success =
+      document.execCommand('copy');
+      // if(success)
+      //   console.log('Successfully copied to clipboard');
+      // else
+      //   console.log('Unable to copy to clipboard');
+
+      window.getSelection().removeRange(range);
+    }
+
+    // kb
+
+    function rndBase36(length)
+    {
+      var chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+      var len   = chars.length;
+      
+      var r = '';
+      
+      for( var i = 0; i < length; i++)
+      {
+        var rnd = Math.floor( Math.random() * (len - 1) );
+        r += chars[rnd];
+      }
+
+      return r;
+    }
+
+    function newCode(used, digits)
+    {
+      var n;
+
+      do {
+
+        n = rndBase36(digits);
+
+      } while( used.includes(n) );
+
+      return n;
+    }
+
+  </script>
+
+</body>
+</html>
