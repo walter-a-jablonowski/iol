@@ -4,7 +4,7 @@ Similar url shortener. Generates 4-digit alphanum codes for an url. Put on paper
 
 Standalone version uses no backend. Data is added inside a script tag as json.
 
-<img src="img/displ.png" style="border: 1;">
+![displ.png](img/displ.jpg?raw=true "Sample")
 
 
 ## Copyright and License
