@@ -2,7 +2,9 @@
 
 Similar url shortener. Generates 4-digit alphanum codes for an url. Put on papers. Input the code from papers in the form and filter. The URL shows up. Thus: you can link simple paper with the internet.
 
-Standalone version uses no backend. Data is added inside a script tag as json.
+About 1.600.000 codes available. Have fun! :wink:
+
+Standalone version is just a single html file, and uses no backend for data. Data is added inside a script tag as json.
 
 ![displ.png](img/displ.jpg?raw=true "Sample")
 
