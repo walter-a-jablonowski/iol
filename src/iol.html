@@ -7,18 +7,22 @@
 
   <!-- Data -->
 
+  <!-- Gruppen werden so ungefähr angegeben MAIN_GRP EIN_SUB_UNGEF so eindeutig wie möglich -->
+
   <script id="data" type="application/json">
     [
       {
         "name":  "Google",
-        "code":  "50X8",
+        "code":  "51X8",
         "loc":   "http://www.google.de",
+        "group": "",
         "usage": "manual"
       },
       {
         "name":  "Google 2",
         "code":  "DH1X",
         "loc":   "http://www.google.de",
+        "group": "",
         "usage": "manual"
       }
     ]
@@ -225,9 +229,9 @@
 
     // kb
 
-    function rndBase36(length)
+    function rndBase32(length)
     {
-      var chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+      var chars = '123456789ABCDEFGHJKMNPQRSTUVWXYZ';
       var len   = chars.length;
       
       var r = '';
@@ -247,7 +251,7 @@
 
       do {
 
-        n = rndBase36(digits);
+        n = rndBase32(digits);
 
       } while( used.includes(n) );
 
