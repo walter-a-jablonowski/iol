@@ -2,7 +2,7 @@
 
 Similar url shortener. Generates 4-digit alphanum codes for an url. Put on papers. Input the code from papers in the form and filter. The URL shows up. Thus: you can link simple paper with the internet.
 
-Codes are case insensitive. Signs used `123456789ABCDEFGHJKMNPQRSTUVWXYZ`, recently removed: `0OIL` (no confusion). About 1.000.000 codes available.
+Codes are case insensitive. Signs used `123456789ABCDEFGHJKMNPQRSTUVWXYZ`, recently removed: `0IOL` (no confusion). About 1.000.000 codes available.
 
 Standalone version is just a single html file, and uses no backend for data. Data is added inside a script tag as json.
 
