@@ -12,7 +12,7 @@ Standalone version is just a single html file, and uses no backend for data. Dat
 ## Changelog
 
 * [x] **2020-04** - Changed use of base36 in base32 for codes
-* [x] **2020-04** - Initial upload
+* [x] **2020-04** - Initial development
 
 
 ## Copyright and License
