@@ -1,4 +1,4 @@
-# "Internet of links"
+# Scrum board links
 
 For use on paper Scrum or Kanban Boards like [this](https://en.wikipedia.org/wiki/Scrum_(software_development)#Sprint_backlog).
 
