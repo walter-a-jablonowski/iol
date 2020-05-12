@@ -6,7 +6,7 @@ Similar url shortener. Generates 4-digit alphanum codes for an url. Put on paper
 
 Codes are case insensitive. Signs used `123456789ABCDEFGHJKMNPQRSTUVWXYZ`, recently removed: `0IOL` (no confusion). About 1.000.000 codes available.
 
-This version is just a single html file, that uses no backend for data. Data is added inside a script tag as json.
+This version is just a single html file, that uses no backend for data. Data is added inside a script tag as json. Add you own backend.
 
 ![displ.png](img/displ.jpg?raw=true "Sample")
 
