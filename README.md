@@ -13,6 +13,8 @@ Codes are case insensitive. Signs used `123456789ABCDEFGHJKMNPQRSTUVWXYZ`, recen
 
 ## Changelog
 
+Major changes
+
 * [x] **2020-04** - Changed use of base36 in base32 (non-standard) for codes
 * [x] **2020-04** - Initial development
 

@@ -232,13 +232,14 @@
     function rndBase32(length)
     {
       var chars = '123456789ABCDEFGHJKMNPQRSTUVWXYZ';
-      var len   = chars.length;
       
       var r = '';
       
       for( var i = 0; i < length; i++)
       {
-        var rnd = Math.floor( Math.random() * (len - 1) );
+        var rnd = Math.floor( Math.random() * (chars.length + 1) );  // rnd is >= 0 && < 1  ==>  + 1 (32 would never be reached)
+        rnd--;                // array idx
+        if(rnd < 0)  rnd = 0; // catch negative
         r += chars[rnd];
       }
 
