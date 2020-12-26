@@ -4,7 +4,7 @@ For use on paper Scrum or Kanban Boards like [this](https://en.wikipedia.org/wik
 
 Similar url shortener: Generates 4-digit alphanum codes for an url. Put on paper. Input the code from paper in the form and filter. The URL shows up. Thus: you can link simple paper with the internet.
 
-**This version** is a single html file, that uses no backend for data. Data is added inside a script tag as json. No more updates, cause I am working on a second, somewhat special version. So, add you own backend.
+**This version** is a single html file, that uses no backend for data. Data is added inside a script tag as json. No more updates, cause I am working on a second, somewhat special version. So, add your own backend.
 
 Codes are case insensitive. Signs used `123456789ABCDEFGHJKMNPQRSTUVWXYZ`, recently removed: `0IOL` (no confusion). About 1.000.000 codes available.
 
